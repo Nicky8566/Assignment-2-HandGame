@@ -24,7 +24,7 @@ public class Game {
   public void play() {
     round++;
     // print start round meesage
-    MessageCli.START_ROUND.printMessage(String.valueOf(round));
+    MessageCli.START_ROUND.printMessage(String.format("%d", round));
     // print ask input meesage
     MessageCli.ASK_INPUT.printMessage();
     // go through a while loop until the input is correct
@@ -45,7 +45,7 @@ public class Game {
 
     LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
     int botNumber = diff.numberFingers();
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.format("%d", botNumber));
+    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(botNumber));
     int sum = Integer.parseInt(numberFingers) + botNumber;
 
     // picking the winnger if the sum is even or odd and the player choice is even or odd
