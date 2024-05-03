@@ -40,12 +40,14 @@ public class Game {
       // print error meesage
       MessageCli.INVALID_INPUT.printMessage();
     }
-    // print info hand meesage
-    MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
 
+    // assigning difficulty level for the bot to pick its number
     LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
     int botNumber = diff.numberFingers();
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(botNumber));
+
+    // print info hand meesage
+    MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
+    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.format("%d", botNumber));
     int sum = Integer.parseInt(numberFingers) + botNumber;
 
     // picking the winnger if the sum is even or odd and the player choice is even or odd
