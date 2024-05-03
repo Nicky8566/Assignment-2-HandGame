@@ -1,16 +1,16 @@
 package nz.ac.auckland.se281.difficulty;
 
-public class difficultyFactory {
-  public static difficulty chooseDifficulty(String difficulty) {
+public class DifficultyFactory {
+  public static LevelDifficulty chooseDifficulty(String difficulty) {
     switch (difficulty) {
       case "E":
-        return new easy();
+        return new Easy();
 
       case "M":
-        return new medium();
+        return new Medium();
 
       case "H":
-        return new hard();
+        return new Hard();
 
       default:
         System.err.println("Something went wrong!");
