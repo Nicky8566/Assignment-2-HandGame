@@ -1,15 +1,17 @@
 package nz.ac.auckland.se281.difficulty;
 
+import nz.ac.auckland.se281.Main.Difficulty;
+
 public class DifficultyFactory {
-  public static LevelDifficulty chooseDifficulty(String difficulty) {
+  public static LevelDifficulty chooseDifficulty(Difficulty difficulty) {
     switch (difficulty) {
-      case "E":
+      case EASY:
         return new Easy();
 
-      case "M":
+      case MEDIUM:
         return new Medium();
 
-      case "H":
+      case HARD:
         return new Hard();
 
       default:
