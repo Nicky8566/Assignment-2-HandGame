@@ -11,12 +11,14 @@ public class Game {
   private String playerName;
   private String numberFingers;
   private Difficulty howDiffcult;
+  private Choice oddOrEven;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     playerName = options[0];
     howDiffcult = difficulty;
+    oddOrEven = choice;
   }
 
   public void play() {
@@ -44,6 +46,8 @@ public class Game {
 
     LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.format("%d", diff.numberFingers()));
+    int sum = Integer.parseInt(numberFingers) + diff.numberFingers();
+    MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.format("%d", sum), oddOrEven.toString());
   }
 
   public void endGame() {}

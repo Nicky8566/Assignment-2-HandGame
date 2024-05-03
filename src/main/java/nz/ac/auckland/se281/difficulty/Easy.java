@@ -1,11 +1,12 @@
 package nz.ac.auckland.se281.difficulty;
 
-import java.util.Random;
+import nz.ac.auckland.se281.Utils;
 
 public class Easy implements LevelDifficulty {
   // testing something
+
   public int numberFingers() {
-    Random random = new Random();
-    return random.nextInt(6);
+    // return a random number between 1 and 5
+    return Utils.getRandomNumberRange(0, 5);
   }
 }
