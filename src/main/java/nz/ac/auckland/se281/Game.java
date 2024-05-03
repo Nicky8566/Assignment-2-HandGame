@@ -5,9 +5,9 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 /** This class represents the Game is the main entry point. */
 public class Game {
-  int round = 0;
-  String playerName;
-  String numberFingers;
+  private int round = 0;
+  private String playerName;
+  private String numberFingers;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
@@ -35,7 +35,8 @@ public class Game {
       MessageCli.INVALID_INPUT.printMessage();
     }
     // print info hand meesage
-    MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
+    MessageCli.PRINT_INFO_HAND.printMessage(
+        String.format("Player %s: fingers: %s", playerName, numberFingers));
   }
 
   public void endGame() {}
