@@ -41,13 +41,22 @@ public class Game {
       MessageCli.INVALID_INPUT.printMessage();
     }
     // print info hand meesage
-    MessageCli.PRINT_INFO_HAND.printMessage(
-        String.format("Player %s: fingers: %s", playerName, numberFingers));
+    MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
 
     LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.format("%d", diff.numberFingers()));
-    int sum = Integer.parseInt(numberFingers) + diff.numberFingers();
-    MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.format("%d", sum), oddOrEven.toString());
+    int botNumber = diff.numberFingers();
+    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.format("%d", botNumber));
+    int sum = Integer.parseInt(numberFingers) + botNumber;
+
+    // picking the winnger if the sum is even or odd and the player choice is even or odd
+    if ((sum % 2 == 0 && oddOrEven == Choice.EVEN) || (sum % 2 != 0 && oddOrEven == Choice.ODD)) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(
+          String.format("%d", sum), oddOrEven.toString(), playerName);
+    } else {
+      Choice opponentChoice = (oddOrEven == Choice.EVEN) ? Choice.ODD : Choice.EVEN;
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(
+          String.format("%d", sum), opponentChoice.toString(), "HAL-9000");
+    }
   }
 
   public void endGame() {}
