@@ -1,8 +1,11 @@
 package nz.ac.auckland.se281.difficulty;
 
+import java.util.Random;
+
 public class Easy implements LevelDifficulty {
   // testing something
   public int numberFingers() {
-    return 2;
+    Random random = new Random();
+    return random.nextInt(6);
   }
 }
