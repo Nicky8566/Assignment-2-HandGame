@@ -22,7 +22,6 @@ public class Game {
     playerName = options[0];
     howDiffcult = difficulty;
     oddOrEven = choice;
-
     topStrat.resetHistory();
     Medium.resetRounds();
     round = 0;
@@ -50,6 +49,7 @@ public class Game {
 
     // adds number of fingers to the history
     topStrat.addPlayerNum(Integer.parseInt(numberFingers));
+    topStrat.setOddOrEven(oddOrEven);
 
     // assigning difficulty level for the bot to pick its number
     LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
