@@ -17,10 +17,13 @@ public class TopStrat implements Strategy {
     for (int i = 0; i < history.size(); i++) {
       if (history.get(i) % 2 == 0) {
         even++;
-      } else {
+      }
+      if (history.get(i) % 2 != 0) {
         odd++;
       }
     }
+    System.out.println("The odd and even is: " + odd + even);
+    System.out.println("The odd and even is: " + oddOrEven);
 
     if (oddOrEven == Choice.EVEN && even > odd || oddOrEven == Choice.ODD && odd > even) {
       // if there are more even numbers return 10
@@ -34,8 +37,8 @@ public class TopStrat implements Strategy {
     if (odd == even) {
       return Utils.getRandomNumberRange(0, 5);
     }
-    // as an error
-    return 10;
+    // TO TELL ME IT WAS AN ERROR
+    return 35505;
   }
 
   public void addPlayerNum(int num) {
