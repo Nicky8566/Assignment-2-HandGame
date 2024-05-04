@@ -18,4 +18,8 @@ public class Medium implements LevelDifficulty {
     }
     return strategy.process();
   }
+
+  public static void resetRounds() {
+    rounds = 0;
+  }
 }
