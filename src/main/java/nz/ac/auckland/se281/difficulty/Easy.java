@@ -1,12 +1,13 @@
 package nz.ac.auckland.se281.difficulty;
 
-import nz.ac.auckland.se281.Utils;
+import nz.ac.auckland.se281.strategy.RandomStrat;
+import nz.ac.auckland.se281.strategy.StrategyChanger;
 
 public class Easy implements LevelDifficulty {
   // testing something
 
   public int numberFingers() {
-    // return a random number between 1 and 5
-    return Utils.getRandomNumberRange(0, 5);
+    StrategyChanger strategy = new StrategyChanger(new RandomStrat());
+    return strategy.process();
   }
 }

@@ -11,7 +11,7 @@ public class StrategyChanger {
     this.strategy = strategy;
   }
 
-  public void process() {
-    strategy.execute();
+  public int process() {
+    return strategy.execute();
   }
 }
