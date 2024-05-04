@@ -6,7 +6,7 @@ import nz.ac.auckland.se281.strategy.StrategyChanger;
 public class Easy implements LevelDifficulty {
   // testing something
 
-  public int numberFingers() {
+  public int numberFingers(int rounds) {
     StrategyChanger strategy = new StrategyChanger(new RandomStrat());
     return strategy.process();
   }

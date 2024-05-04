@@ -43,7 +43,7 @@ public class Game {
 
     // assigning difficulty level for the bot to pick its number
     LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
-    int botNumber = diff.numberFingers();
+    int botNumber = diff.numberFingers(round);
 
     // print info hand meesage
     MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
