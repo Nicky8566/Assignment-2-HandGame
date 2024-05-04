@@ -7,7 +7,6 @@ import nz.ac.auckland.se281.difficulty.LevelDifficulty;
 import nz.ac.auckland.se281.difficulty.Medium;
 import nz.ac.auckland.se281.strategy.TopStrat;
 
-
 /** This class represents the Game is the main entry point. */
 public class Game {
   private int round = 0;
@@ -23,6 +22,7 @@ public class Game {
     playerName = options[0];
     howDiffcult = difficulty;
     oddOrEven = choice;
+
     topStrat.resetHistory();
     Medium.resetRounds();
     round = 0;
@@ -48,13 +48,13 @@ public class Game {
       MessageCli.INVALID_INPUT.printMessage();
     }
 
+    // adds number of fingers to the history
     topStrat.addPlayerNum(Integer.parseInt(numberFingers));
 
     // assigning difficulty level for the bot to pick its number
     LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
     int botNumber = diff.numberFingers();
-    
-    
+
     // print info hand meesage
     MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.format("%d", botNumber));
