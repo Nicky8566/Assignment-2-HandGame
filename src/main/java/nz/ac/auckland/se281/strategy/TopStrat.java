@@ -22,8 +22,6 @@ public class TopStrat implements Strategy {
         odd++;
       }
     }
-    System.out.println("The odd and even is: " + odd + even);
-    System.out.println("The odd and even is: " + oddOrEven);
 
     if (oddOrEven == Choice.EVEN && even > odd || oddOrEven == Choice.ODD && odd > even) {
       // if there are more even numbers return 10
