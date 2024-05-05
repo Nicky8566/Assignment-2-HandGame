@@ -25,10 +25,16 @@ public class Game {
     oddOrEven = choice;
     topStrat.resetHistory();
     Medium.resetRounds();
+    Hard.resetRounds();
     round = 0;
   }
 
   public void play() {
+    // check if they instialzed a new game
+    if (playerName == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
     round++;
     // print start round meesage
     MessageCli.START_ROUND.printMessage(String.format("%d", round));
@@ -74,7 +80,17 @@ public class Game {
     }
   }
 
-  public void endGame() {}
+  public void endGame() {
+    if (playerName == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+  }
 
-  public void showStats() {}
+  public void showStats() {
+    if (playerName == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+  }
 }
