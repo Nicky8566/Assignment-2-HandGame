@@ -16,21 +16,18 @@ public class Game {
   private Difficulty howDiffcult;
   private Choice oddOrEven;
   private TopStrat topStrat = new TopStrat();
-  private static int playersWins = 0;
-  private static int playersLoses = 0;
-  private static int botWins = 0;
-  private static int botloses = 0;
+  private int playersWins = 0;
+  private int playersLoses = 0;
+  private int botWins = 0;
+  private int botloses = 0;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
+    reset();
     playerName = options[0];
     howDiffcult = difficulty;
     oddOrEven = choice;
-    topStrat.resetHistory();
-    Medium.resetRounds();
-    Hard.resetRounds();
-    round = 0;
   }
 
   public void play() {
@@ -94,6 +91,15 @@ public class Game {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
+    showStats();
+    if (playersWins > botWins) {
+      MessageCli.PRINT_END_GAME.printMessage(playerName);
+    } else if (playersWins < botWins) {
+      MessageCli.PRINT_END_GAME.printMessage("HAL-9000");
+    } else {
+      MessageCli.PRINT_END_GAME_TIE.printMessage();
+    }
+    reset();
   }
 
   public void showStats() {
@@ -105,5 +111,20 @@ public class Game {
         playerName, String.format("%d", playersWins), String.format("%d", playersLoses));
     MessageCli.PRINT_PLAYER_WINS.printMessage(
         "HAL-9000", String.format("%d", botWins), String.format("%d", botloses));
+  }
+
+  public void reset() {
+    topStrat.resetHistory();
+    Medium.resetRounds();
+    Hard.resetRounds();
+    round = 0;
+    playerName = null;
+    numberFingers = null;
+    howDiffcult = null;
+    oddOrEven = null;
+    playersWins = 0;
+    playersLoses = 0;
+    botWins = 0;
+    botloses = 0;
   }
 }
