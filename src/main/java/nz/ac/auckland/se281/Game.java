@@ -3,6 +3,7 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.difficulty.DifficultyFactory;
+import nz.ac.auckland.se281.difficulty.Hard;
 import nz.ac.auckland.se281.difficulty.LevelDifficulty;
 import nz.ac.auckland.se281.difficulty.Medium;
 import nz.ac.auckland.se281.strategy.TopStrat;
@@ -64,10 +65,12 @@ public class Game {
     if ((sum % 2 == 0 && oddOrEven == Choice.EVEN) || (sum % 2 != 0 && oddOrEven == Choice.ODD)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(
           String.format("%d", sum), oddOrEven.toString(), playerName);
+      Hard.setBotResultS("lost");
     } else {
       Choice opponentChoice = (oddOrEven == Choice.EVEN) ? Choice.ODD : Choice.EVEN;
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(
           String.format("%d", sum), opponentChoice.toString(), "HAL-9000");
+      Hard.setBotResultS("won");
     }
   }
 
