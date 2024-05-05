@@ -16,6 +16,10 @@ public class Game {
   private Difficulty howDiffcult;
   private Choice oddOrEven;
   private TopStrat topStrat = new TopStrat();
+  private static int playersWins = 0;
+  private static int playersLoses = 0;
+  private static int botWins = 0;
+  private static int botloses = 0;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
@@ -72,11 +76,16 @@ public class Game {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(
           String.format("%d", sum), oddOrEven.toString(), playerName);
       Hard.setBotResultS("lost");
+      playersWins++;
+      botloses++;
+
     } else {
       Choice opponentChoice = (oddOrEven == Choice.EVEN) ? Choice.ODD : Choice.EVEN;
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(
           String.format("%d", sum), opponentChoice.toString(), "HAL-9000");
       Hard.setBotResultS("won");
+      playersLoses++;
+      botWins++;
     }
   }
 
@@ -92,5 +101,9 @@ public class Game {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        playerName, String.format("%d", playersWins), String.format("%d", playersLoses));
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        "HAL-9000", String.format("%d", botWins), String.format("%d", botloses));
   }
 }
