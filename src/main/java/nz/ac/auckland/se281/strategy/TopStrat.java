@@ -7,6 +7,11 @@ public class TopStrat extends Strategy {
 
   @Override
   public int execute() {
+    System.out.println(history);
+    System.out.println(oddOrEven);
+    System.out.println(even);
+    System.out.println(even);
+
     // check if the players history has more odd or even numbers in it
     for (int i = 0; i < history.size(); i++) {
       if (history.get(i) % 2 == 0) {

@@ -5,7 +5,6 @@ public class Medium extends LevelDifficulty {
 
     if (rounds >= 4) {
       strategy.setStrategy(topStrat);
-
       return strategy.process();
     } else {
       excuteRandStrat();

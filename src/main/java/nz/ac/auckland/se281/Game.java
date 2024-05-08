@@ -4,7 +4,6 @@ import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.difficulty.DifficultyFactory;
 import nz.ac.auckland.se281.difficulty.LevelDifficulty;
-import nz.ac.auckland.se281.strategy.TopStrat;
 
 /** This class represents the Game is the main entry point. */
 public class Game {
@@ -13,7 +12,6 @@ public class Game {
   private String numberFingers;
   private Difficulty howDifficult;
   private Choice oddOrEven;
-  private TopStrat topStrat = new TopStrat();
   private int playersWins = 0;
   private int playersLoses = 0;
   private int botWins = 0;
@@ -29,6 +27,7 @@ public class Game {
     playerName = options[0];
     howDifficult = difficulty;
     oddOrEven = choice;
+    diff = DifficultyFactory.chooseDifficulty(howDifficult);
   }
 
   public void play() {
@@ -57,10 +56,9 @@ public class Game {
     }
 
     // assigning difficulty level for the bot to pick its number
-    diff = DifficultyFactory.chooseDifficulty(howDifficult);
-    int botNumber = diff.numberFingers();
-
     diff.giveTopInfo(oddOrEven, numberFingers);
+    diff.setRounds(round);
+    int botNumber = diff.numberFingers();
 
     // print info hand meesage
     MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
