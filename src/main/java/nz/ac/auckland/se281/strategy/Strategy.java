@@ -22,9 +22,13 @@ public abstract class Strategy {
   }
 
   public void resetHistory() {
+    resetEvenOdd();
     history.clear();
-    odd = 0;
-    even = 0;
     oddOrEven = null;
+  }
+
+  public void resetEvenOdd() {
+    even = 0;
+    odd = 0;
   }
 }

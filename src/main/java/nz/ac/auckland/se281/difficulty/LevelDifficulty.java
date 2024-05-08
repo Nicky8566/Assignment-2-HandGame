@@ -27,10 +27,6 @@ public abstract class LevelDifficulty {
     botsResult = result;
   }
 
-  public void addHistory(int num) {
-    topStrat.addPlayerNum(num);
-  }
-
   public void giveTopInfo(Choice oddOrEven, String numberFingers) {
     topStrat.addPlayerNum(Integer.parseInt(numberFingers));
     topStrat.setOddOrEven(oddOrEven);

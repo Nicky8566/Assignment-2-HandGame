@@ -112,6 +112,7 @@ public class Game {
 
   public void reset() {
     diff.resetTopInfo();
+    diff.resetRounds();
     round = 0;
     playerName = null;
     numberFingers = null;
