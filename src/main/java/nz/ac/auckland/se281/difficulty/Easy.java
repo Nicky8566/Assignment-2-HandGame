@@ -1,13 +1,9 @@
 package nz.ac.auckland.se281.difficulty;
 
-import nz.ac.auckland.se281.strategy.RandomStrat;
-import nz.ac.auckland.se281.strategy.StrategyChanger;
-
-public class Easy implements LevelDifficulty {
+public class Easy extends LevelDifficulty {
   // testing something
 
   public int numberFingers() {
-    StrategyChanger strategy = new StrategyChanger(new RandomStrat());
-    return strategy.process();
+    return excuteRandStrat();
   }
 }

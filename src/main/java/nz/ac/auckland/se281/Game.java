@@ -3,9 +3,7 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.difficulty.DifficultyFactory;
-import nz.ac.auckland.se281.difficulty.Hard;
 import nz.ac.auckland.se281.difficulty.LevelDifficulty;
-import nz.ac.auckland.se281.difficulty.Medium;
 import nz.ac.auckland.se281.strategy.TopStrat;
 
 /** This class represents the Game is the main entry point. */
@@ -13,20 +11,23 @@ public class Game {
   private int round = 0;
   private String playerName;
   private String numberFingers;
-  private Difficulty howDiffcult;
+  private Difficulty howDifficult;
   private Choice oddOrEven;
   private TopStrat topStrat = new TopStrat();
   private int playersWins = 0;
   private int playersLoses = 0;
   private int botWins = 0;
   private int botloses = 0;
+  private LevelDifficulty diff = null;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
-    reset();
+    if (playerName != null) {
+      reset();
+    }
     playerName = options[0];
-    howDiffcult = difficulty;
+    howDifficult = difficulty;
     oddOrEven = choice;
   }
 
@@ -60,7 +61,7 @@ public class Game {
     topStrat.setOddOrEven(oddOrEven);
 
     // assigning difficulty level for the bot to pick its number
-    LevelDifficulty diff = DifficultyFactory.chooseDifficulty(howDiffcult);
+    diff = DifficultyFactory.chooseDifficulty(howDifficult);
     int botNumber = diff.numberFingers();
 
     // print info hand meesage
@@ -72,7 +73,7 @@ public class Game {
     if ((sum % 2 == 0 && oddOrEven == Choice.EVEN) || (sum % 2 != 0 && oddOrEven == Choice.ODD)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(
           String.format("%d", sum), oddOrEven.toString(), playerName);
-      Hard.setBotResultS("lost");
+      diff.setBotResultS("lost");
       playersWins++;
       botloses++;
 
@@ -80,7 +81,7 @@ public class Game {
       Choice opponentChoice = (oddOrEven == Choice.EVEN) ? Choice.ODD : Choice.EVEN;
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(
           String.format("%d", sum), opponentChoice.toString(), "HAL-9000");
-      Hard.setBotResultS("won");
+      diff.setBotResultS("won");
       playersLoses++;
       botWins++;
     }
@@ -115,12 +116,11 @@ public class Game {
 
   public void reset() {
     topStrat.resetHistory();
-    Medium.resetRounds();
-    Hard.resetRounds();
+    diff.resetRounds();
     round = 0;
     playerName = null;
     numberFingers = null;
-    howDiffcult = null;
+    howDifficult = null;
     oddOrEven = null;
     playersWins = 0;
     playersLoses = 0;

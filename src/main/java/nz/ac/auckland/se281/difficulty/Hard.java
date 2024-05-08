@@ -1,18 +1,11 @@
 package nz.ac.auckland.se281.difficulty;
 
 import nz.ac.auckland.se281.strategy.RandomStrat;
-// importat array list and list
-import nz.ac.auckland.se281.strategy.StrategyChanger;
 import nz.ac.auckland.se281.strategy.TopStrat;
 
-public class Hard implements LevelDifficulty {
-  // current strategy
-  private static int rounds = 0;
-  private static String botsResult = null;
-
+public class Hard extends LevelDifficulty {
   public int numberFingers() {
-    rounds++;
-    StrategyChanger strategy = new StrategyChanger(new RandomStrat());
+
     if (rounds >= 4) {
       if (botsResult == "lost" && strategy.getStrategy() instanceof TopStrat) {
         strategy.setStrategy(new RandomStrat());
@@ -20,15 +13,9 @@ public class Hard implements LevelDifficulty {
       if (botsResult == "lost" && strategy.getStrategy() instanceof RandomStrat) {
         strategy.setStrategy(new TopStrat());
       }
+    } else {
+      excuteRandStrat();
     }
     return strategy.process();
-  }
-
-  public static void resetRounds() {
-    rounds = 0;
-  }
-
-  public static void setBotResultS(String result) {
-    botsResult = result;
   }
 }
