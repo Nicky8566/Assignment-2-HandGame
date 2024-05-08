@@ -1,17 +1,11 @@
 package nz.ac.auckland.se281.strategy;
 
-import java.util.ArrayList;
-import java.util.List;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Utils;
 
-public class TopStrat implements Strategy {
-  // create array list
-  private static List<Integer> history = new ArrayList<>();
-  private int odd = 0;
-  private int even = 0;
-  private static Choice oddOrEven;
+public class TopStrat extends Strategy {
 
+  @Override
   public int execute() {
     // check if the players history has more odd or even numbers in it
     for (int i = 0; i < history.size(); i++) {
@@ -37,20 +31,5 @@ public class TopStrat implements Strategy {
     }
     // TO TELL ME IT WAS AN ERROR
     return 35505;
-  }
-
-  public void addPlayerNum(int num) {
-    history.add(num);
-  }
-
-  public void setOddOrEven(Choice choice) {
-    oddOrEven = choice;
-  }
-
-  public void resetHistory() {
-    history.clear();
-    odd = 0;
-    even = 0;
-    oddOrEven = null;
   }
 }

@@ -11,7 +11,7 @@ public class Hard extends LevelDifficulty {
         strategy.setStrategy(new RandomStrat());
       }
       if (botsResult == "lost" && strategy.getStrategy() instanceof RandomStrat) {
-        strategy.setStrategy(new TopStrat());
+        strategy.setStrategy(topStrat);
       }
     } else {
       excuteRandStrat();

@@ -18,7 +18,7 @@ public class Game {
   private int playersLoses = 0;
   private int botWins = 0;
   private int botloses = 0;
-  private LevelDifficulty diff = null;
+  private LevelDifficulty diff;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
@@ -56,13 +56,11 @@ public class Game {
       MessageCli.INVALID_INPUT.printMessage();
     }
 
-    // adds number of fingers to the history
-    topStrat.addPlayerNum(Integer.parseInt(numberFingers));
-    topStrat.setOddOrEven(oddOrEven);
-
     // assigning difficulty level for the bot to pick its number
     diff = DifficultyFactory.chooseDifficulty(howDifficult);
     int botNumber = diff.numberFingers();
+
+    diff.giveTopInfo(oddOrEven, numberFingers);
 
     // print info hand meesage
     MessageCli.PRINT_INFO_HAND.printMessage(playerName, numberFingers);
@@ -115,8 +113,7 @@ public class Game {
   }
 
   public void reset() {
-    topStrat.resetHistory();
-    diff.resetRounds();
+    diff.resetTopInfo();
     round = 0;
     playerName = null;
     numberFingers = null;

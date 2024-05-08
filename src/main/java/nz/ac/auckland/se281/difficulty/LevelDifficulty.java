@@ -1,15 +1,18 @@
 package nz.ac.auckland.se281.difficulty;
 
+import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.strategy.RandomStrat;
+import nz.ac.auckland.se281.strategy.Strategy;
 import nz.ac.auckland.se281.strategy.StrategyChanger;
+import nz.ac.auckland.se281.strategy.TopStrat;
 
 public abstract class LevelDifficulty {
   protected StrategyChanger strategy = new StrategyChanger(new RandomStrat());
+  protected Strategy topStrat = new TopStrat();
   protected int rounds = 0;
   protected String botsResult = null;
 
   public int excuteRandStrat() {
-    StrategyChanger strategy = new StrategyChanger(new RandomStrat());
     return strategy.process();
   }
 
@@ -23,6 +26,15 @@ public abstract class LevelDifficulty {
 
   public void setBotResultS(String result) {
     botsResult = result;
+  }
+
+  public void giveTopInfo(Choice oddOrEven, String numberFingers) {
+    topStrat.addPlayerNum(Integer.parseInt(numberFingers));
+    topStrat.setOddOrEven(oddOrEven);
+  }
+
+  public void resetTopInfo() {
+    topStrat.resetHistory();
   }
 
   public abstract int numberFingers();
