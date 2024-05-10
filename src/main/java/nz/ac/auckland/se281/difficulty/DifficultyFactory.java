@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281.difficulty;
 
 import nz.ac.auckland.se281.Main.Difficulty;
+import nz.ac.auckland.se281.MessageCli;
 
 public class DifficultyFactory {
   public static LevelDifficulty chooseDifficulty(Difficulty difficulty) {
@@ -15,7 +16,7 @@ public class DifficultyFactory {
         return new Hard();
 
       default:
-        System.err.println("Something went wrong!");
+        MessageCli.INVALID_DIFFICULTY.printMessage();
         System.exit(0);
     }
     return null;

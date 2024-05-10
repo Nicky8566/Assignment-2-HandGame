@@ -4,6 +4,6 @@ public class Easy extends LevelDifficulty {
   // testing something
 
   public int numberFingers() {
-    return excuteRandStrat();
+    return strategy.process();
   }
 }

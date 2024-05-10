@@ -11,10 +11,6 @@ public abstract class LevelDifficulty {
   protected int rounds = 0;
   protected String botsResult = null;
 
-  public int excuteRandStrat() {
-    return strategy.process();
-  }
-
   public void setRounds(int round) {
     rounds = round;
   }
