@@ -3,6 +3,10 @@ package nz.ac.auckland.se281.difficulty;
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.MessageCli;
 
+/**
+ * Factory class to create the difficulty level. This will depend on the user's choice of
+ * difficulty.
+ */
 public class DifficultyFactory {
   public static LevelDifficulty chooseDifficulty(Difficulty difficulty) {
     switch (difficulty) {
