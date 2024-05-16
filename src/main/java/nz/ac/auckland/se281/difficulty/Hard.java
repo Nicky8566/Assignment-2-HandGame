@@ -5,7 +5,8 @@ import nz.ac.auckland.se281.strategy.TopStrat;
 
 public class Hard extends LevelDifficulty {
   /**
-   * This method returns the number of fingers the bot will play on the hard difficulty.
+   * This method returns the number of fingers the bot will play on the hard difficulty. If the
+   * rounds are less than 4, the bot will swtich strategys when it loses.
    *
    * @return the number of fingers the bot will play.
    */
