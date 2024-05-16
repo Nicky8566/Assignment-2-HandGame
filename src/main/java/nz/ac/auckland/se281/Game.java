@@ -18,6 +18,14 @@ public class Game {
   private int botloses = 0;
   private LevelDifficulty diff;
 
+  /**
+   * This method is used to start a new game using all the parameters. It intializes everything
+   * needed for the game to start.
+   *
+   * @param difficulty
+   * @param choice
+   * @param options
+   */
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
@@ -30,6 +38,9 @@ public class Game {
     diff = DifficultyFactory.chooseDifficulty(howDifficult);
   }
 
+  /**
+   * This method is used to play the game. It goes through the game logic and prints the outcome.
+   */
   public void play() {
     // check if they instialzed a new game
     if (playerName == null) {
@@ -83,6 +94,7 @@ public class Game {
     }
   }
 
+  /** This method is used to end the game. It prints the final outcome of the game. */
   public void endGame() {
     if (playerName == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -99,6 +111,10 @@ public class Game {
     reset();
   }
 
+  /**
+   * This method is used to show the stats of the game. It prints the number of wins and loses for
+   * the player and the bot.
+   */
   public void showStats() {
     if (playerName == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -110,6 +126,7 @@ public class Game {
         "HAL-9000", String.format("%d", botWins), String.format("%d", botloses));
   }
 
+  /** This method is used to reset the game. It resets all the variables to their initial state. */
   public void reset() {
     diff.resetTopInfo();
     diff.resetRounds();
