@@ -1,11 +1,17 @@
 package nz.ac.auckland.se281.strategy;
-import nz.ac.auckland.se281.Main.Choice;
-import nz.ac.auckland.se281.Utils;
+
 import static nz.ac.auckland.se281.Utils.isEven;
 import static nz.ac.auckland.se281.Utils.isOdd;
 
-public class TopStrat extends Strategy {
+import nz.ac.auckland.se281.Main.Choice;
+import nz.ac.auckland.se281.Utils;
 
+public class TopStrat extends Strategy {
+  /*
+   * This method returns a number between 1 and 5 depending if the players has primarliy chosen odd or even for their fingers.
+   *
+   * @return a number between 1 and 5.
+   */
   @Override
   public int execute() {
 
