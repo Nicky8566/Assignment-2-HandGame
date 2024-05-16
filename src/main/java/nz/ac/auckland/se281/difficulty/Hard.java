@@ -14,6 +14,6 @@ public class Hard extends LevelDifficulty {
         strategy.setStrategy(topStrat);
       }
     } 
-    return strategy.process();
+    return strategy.process()
   }
 }

@@ -1,7 +1,8 @@
 package nz.ac.auckland.se281.strategy;
-
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Utils;
+import static nz.ac.auckland.se281.Utils.isEven;
+import static nz.ac.auckland.se281.Utils.isOdd;
 
 public class TopStrat extends Strategy {
 
@@ -10,23 +11,23 @@ public class TopStrat extends Strategy {
 
     // check if the players history has more odd or even numbers in it
     for (int i = 0; i < history.size(); i++) {
-      if (history.get(i) % 2 == 0) {
+      if (isEven(history.get(i))) {
         even++;
       }
-      if (history.get(i) % 2 != 0) {
+      if (isOdd(history.get(i))) {
         odd++;
       }
     }
 
     if (oddOrEven == Choice.EVEN && even > odd || oddOrEven == Choice.ODD && odd > even) {
       resetEvenOdd();
-      // if there are more even numbers return 10
+      // if there are more even numbers return odd
       return Utils.getRandomOddNumber();
     }
 
     if (oddOrEven == Choice.EVEN && odd > even || oddOrEven == Choice.ODD && even > odd) {
       resetEvenOdd();
-      // if there are more even numbers return 10
+      // if there are more even numbers return even
       return Utils.getRandomEvenNumber();
     }
     if (odd == even) {
