@@ -96,11 +96,14 @@ public class Game {
 
   /** This method is used to end the game. It prints the final outcome of the game. */
   public void endGame() {
+    // check if they instialzed a new game
     if (playerName == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
+    // print the stats of the game
     showStats();
+    // print the winner of the game
     if (playersWins > botWins) {
       MessageCli.PRINT_END_GAME.printMessage(playerName);
     } else if (playersWins < botWins) {
@@ -108,6 +111,7 @@ public class Game {
     } else {
       MessageCli.PRINT_END_GAME_TIE.printMessage();
     }
+    // reset the game
     reset();
   }
 
@@ -116,25 +120,31 @@ public class Game {
    * the player and the bot.
    */
   public void showStats() {
+    // checking if player has even started a new game
     if (playerName == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
+    // print player wins meesage
     MessageCli.PRINT_PLAYER_WINS.printMessage(
         playerName, String.format("%d", playersWins), String.format("%d", playersLoses));
+    // print bot wins meesage
     MessageCli.PRINT_PLAYER_WINS.printMessage(
         "HAL-9000", String.format("%d", botWins), String.format("%d", botloses));
   }
 
   /** This method is used to reset the game. It resets all the variables to their initial state. */
   public void reset() {
+    // reset history and rounds for top strategy
     diff.resetTopInfo();
     diff.resetRounds();
+    // reset rounds and player stats
     round = 0;
     playerName = null;
     numberFingers = null;
     howDifficult = null;
     oddOrEven = null;
+    // reset player and bot wins and loses
     playersWins = 0;
     playersLoses = 0;
     botWins = 0;

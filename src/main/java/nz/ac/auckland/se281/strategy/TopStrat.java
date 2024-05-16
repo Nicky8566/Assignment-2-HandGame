@@ -8,7 +8,8 @@ import nz.ac.auckland.se281.Utils;
 
 public class TopStrat extends Strategy {
   /*
-   * This method returns a number between 1 and 5 depending if the players has primarliy chosen odd or even for their fingers.
+   * This method returns a number between 1 and 5 depending 
+   * if the players has primarliy chosen odd or even for their fingers.
    *
    * @return a number between 1 and 5.
    */

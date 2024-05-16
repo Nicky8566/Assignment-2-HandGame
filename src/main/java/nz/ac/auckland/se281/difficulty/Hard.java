@@ -11,8 +11,9 @@ public class Hard extends LevelDifficulty {
    */
   @Override
   public int numberFingers() {
-
+    // first if the rounds are less than 4, then the bot will play randomly
     if (rounds >= 4) {
+      // if the bot lost the last round, then the bot will swtich strategy
       if (botsResult == "lost" && strategy.getStrategy() instanceof TopStrat) {
         strategy.setStrategy(new RandomStrat());
       }
