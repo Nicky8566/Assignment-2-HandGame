@@ -22,9 +22,9 @@ public class Game {
    * This method is used to start a new game using all the parameters. It intializes everything
    * needed for the game to start.
    *
-   * @param difficulty
-   * @param choice
-   * @param options
+   * @param difficulty the difficulty the player wants to play on
+   * @param choice the choice of odd or even the player wants to play to win for
+   * @param options the options for the game (includes the name of the player)
    */
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
