@@ -18,7 +18,7 @@ difficulty. The game combines elements of chance and psychology, as HAL-9000 att
 - **Score Tracking:** Keeps track of the number of rounds won by each player.
 
 ## Installation
-To run **Project_RiskMap** locally, follow these steps:
+To run **Assignment-2-HandGame** locally, follow these steps:
 
 ### 1. Clone the repository:
 ```sh
